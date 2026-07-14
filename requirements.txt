@@ -6,3 +6,6 @@ google-play-scraper
 langdetect
 emoji
 markdown
+fastapi
+uvicorn[standard]
+pydantic
