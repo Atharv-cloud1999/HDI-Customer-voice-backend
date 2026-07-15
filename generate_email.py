@@ -153,6 +153,8 @@ class EmailGenerator:
             if self.sender_password and self.sender_password in error_str:
                 error_str = error_str.replace(self.sender_password, "***FILTERED***")
             print(f"Failed to send email: {error_str}")
+            raise RuntimeError(error_str)
+
 
     def run(self):
         print("Starting Phase 5: Email Draft Generation...")
@@ -166,8 +168,9 @@ class EmailGenerator:
             
             self.send_email(subject, text_body, html_body)
             
-        except Exception as e:
+except Exception as e:
             print(f"Phase 5 Error: {e}")
+            raise
             
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Phase 5 - Pulse Email Generator")
